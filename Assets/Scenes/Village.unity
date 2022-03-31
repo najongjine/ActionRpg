@@ -9459,6 +9459,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   theRB: {fileID: 453574058}
+  theSR: {fileID: 2000987902}
+  playerDirectionSprites:
+  - {fileID: 21300000, guid: 12ff971a94504e64b972d3df8684bc9d, type: 3}
+  - {fileID: 21300000, guid: 96cc55856354e7d4a82c7933a5b84e0d, type: 3}
+  - {fileID: 21300000, guid: 0a55318f321810a45b36835f9e397df5, type: 3}
 --- !u!50 &453574058
 Rigidbody2D:
   serializedVersion: 4
