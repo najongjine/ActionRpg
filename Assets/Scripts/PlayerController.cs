@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public SpriteRenderer theSR;
     public Sprite[] playerDirectionSprites;
+    public Animator wpnAnim;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +58,11 @@ public class PlayerController : MonoBehaviour
                     theSR.sprite = playerDirectionSprites[2];
                 }
             }
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            wpnAnim.SetTrigger("Attack");
         }
 
     }
