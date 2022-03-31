@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("## GetMouseButtonDown ");
             wpnAnim.SetTrigger("Attack");
         }
 
