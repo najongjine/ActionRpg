@@ -6,10 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
     public Rigidbody2D theRB;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim=GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,5 +25,7 @@ public class PlayerController : MonoBehaviour
         /* with physics system */
         theRB.velocity = new Vector2(Input.GetAxis("Horizontal")
             , Input.GetAxis("Vertical")).normalized * moveSpeed;
+
+        anim.SetFloat("Speed",theRB.velocity.magnitude);
     }
 }
