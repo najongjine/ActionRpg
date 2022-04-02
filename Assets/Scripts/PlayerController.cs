@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     public float moveSpeed;
     public Rigidbody2D theRB;
     private Animator anim;
@@ -11,6 +13,11 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer theSR;
     public Sprite[] playerDirectionSprites;
     public Animator wpnAnim;
+
+    private void Awake()
+    {
+        instance=this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +77,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("## GetMouseButtonDown ");
             wpnAnim.SetTrigger("Attack");
         }
 
