@@ -13,41 +13,96 @@ public class EnemyController : MonoBehaviour
     private float waitCounter, moveCounter;
 
     private Vector2 moveDir;
+
+    public bool shouldChase;
+    private bool isChasing;
+    public float chaseSpeed, rangeToChase, waitAfterHitting;
     // Start is called before the first frame update
     void Start()
     {
-        waitCounter = Random.Range(waitTime*.75f, waitTime * 1.25f);
+        waitCounter = Random.Range(waitTime * .75f, waitTime * 1.25f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (waitCounter > 0)
+        if (!isChasing)
         {
-            waitCounter = waitCounter - Time.deltaTime;
-            theRB.velocity = Vector2.zero;
-            if (waitCounter <= 0)
+            if (waitCounter > 0)
             {
-                moveCounter = Random.Range(moveTime*.75f,moveTime*1.25f);
-                anim.SetBool("moving",true);
-                moveDir=new Vector2 (Random.Range(-1f,1f), Random.Range(-1f, 1f));
-                moveDir.Normalize();
+                waitCounter = waitCounter - Time.deltaTime;
+                theRB.velocity = Vector2.zero;
+                if (waitCounter <= 0)
+                {
+                    moveCounter = Random.Range(moveTime * .75f, moveTime * 1.25f);
+                    anim.SetBool("moving", true);
+                    moveDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+                    moveDir.Normalize();
+                }
+            }
+            else
+            {
+                moveCounter -= Time.deltaTime;
+                theRB.velocity = moveDir * moveSpeed;
+                if (moveCounter <= 0)
+                {
+                    waitCounter = Random.Range(waitTime * .75f, waitTime * 1.25f);
+                    anim.SetBool("moving", false);
+                }
+
+                if (shouldChase)
+                {
+                    if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) < rangeToChase)
+                    {
+                        isChasing = true;
+
+                    }
+                }
+
             }
         }
         else
         {
-            moveCounter -= Time.deltaTime;
-            theRB.velocity = moveDir * moveSpeed;
-            if (moveCounter<=0)
+            if (waitCounter > 0)
             {
-                waitCounter = Random.Range(waitTime * .75f, waitTime * 1.25f);
-                anim.SetBool("moving", false);
+                waitCounter -= Time.deltaTime;
+                theRB.velocity = Vector2.zero;
+                if (waitCounter <= 0)
+                {
+                    anim.SetBool("moving", false);
+                }
             }
-        }
+            else
+            {
+                moveDir = PlayerController.instance.transform.position - transform.position;
+                moveDir.Normalize();
 
-        transform.position=new Vector3(Mathf.Clamp(transform.position.x,area.bounds.min.x+1f,area.bounds.max.x-1f)
+                theRB.velocity = moveDir * chaseSpeed;
+            }
+            if(Vector3.Distance(transform.position,PlayerController.instance.transform.position) > rangeToChase)
+            {
+                isChasing = false;
+                waitCounter = waitTime;
+                anim.SetBool("moving",false);
+            }
+
+        }
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, area.bounds.min.x + 1f, area.bounds.max.x - 1f)
             , Mathf.Clamp(transform.position.y, area.bounds.min.y + 1f, area.bounds.max.y - 1f)
             , transform.position.z);
 
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (isChasing)
+            {
+                waitCounter = waitAfterHitting;
+                anim.SetBool("moving", false);
+            }
+        }
+    }
+
 }

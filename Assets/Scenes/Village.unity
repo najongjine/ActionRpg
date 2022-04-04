@@ -304,6 +304,10 @@ MonoBehaviour:
   moveSpeed: 5
   waitTime: 2
   moveTime: 3
+  shouldChase: 1
+  chaseSpeed: 5
+  rangeToChase: 10
+  waitAfterHitting: 1
 --- !u!58 &57417644
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9827,7 +9831,7 @@ GameObject:
   - component: {fileID: 453574060}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
