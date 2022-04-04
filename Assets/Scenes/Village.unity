@@ -190,6 +190,8 @@ GameObject:
   m_Component:
   - component: {fileID: 57417641}
   - component: {fileID: 57417640}
+  - component: {fileID: 57417642}
+  - component: {fileID: 57417643}
   m_Layer: 0
   m_Name: EnemyBlob
   m_TagString: Untagged
@@ -231,6 +233,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &57417642
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57417639}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &57417643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57417639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe507b4e63a5114a807c987b4c0dea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theRB: {fileID: 57417642}
+  anim: {fileID: 57417640}
+  moveSpeed: 5
+  waitTime: 2
+  moveTime: 3
 --- !u!1 &276411107
 GameObject:
   m_ObjectHideFlags: 0
@@ -32100,7 +32140,7 @@ GameObject:
   - component: {fileID: 832096512}
   - component: {fileID: 832096513}
   m_Layer: 0
-  m_Name: Enemies_Padded_0
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
