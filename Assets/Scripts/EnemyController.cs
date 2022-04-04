@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     public Rigidbody2D theRB;
     public Animator anim;
+    public BoxCollider2D area;
 
     public float moveSpeed;
     public float waitTime, moveTime;
@@ -15,7 +16,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waitCounter = waitTime;
+        waitCounter = Random.Range(waitTime*.75f, waitTime * 1.25f);
     }
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class EnemyController : MonoBehaviour
             theRB.velocity = Vector2.zero;
             if (waitCounter <= 0)
             {
-                moveCounter = moveTime;
+                moveCounter = Random.Range(moveTime*.75f,moveTime*1.25f);
                 anim.SetBool("moving",true);
                 moveDir=new Vector2 (Random.Range(-1f,1f), Random.Range(-1f, 1f));
                 moveDir.Normalize();
@@ -39,10 +40,14 @@ public class EnemyController : MonoBehaviour
             theRB.velocity = moveDir * moveSpeed;
             if (moveCounter<=0)
             {
-                waitCounter = waitTime;
+                waitCounter = Random.Range(waitTime * .75f, waitTime * 1.25f);
                 anim.SetBool("moving", false);
             }
         }
+
+        transform.position=new Vector3(Mathf.Clamp(transform.position.x,area.bounds.min.x+1f,area.bounds.max.x-1f)
+            , Mathf.Clamp(transform.position.y, area.bounds.min.y + 1f, area.bounds.max.y - 1f)
+            , transform.position.z);
 
     }
 }
