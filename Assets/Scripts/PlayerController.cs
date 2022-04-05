@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private float knockbackCounter;
     private Vector2 knockDir;
 
+    public GameObject hitEffect;
     private void Awake()
     {
         instance = this;
@@ -103,11 +104,14 @@ public class PlayerController : MonoBehaviour
 
     public void knockBack(Vector3 knockerPosition)
     {
+        Debug.Log("## called knockBack");
         knockbackCounter = knockbackTime;
         isKnockingBack=true;
 
         knockDir = transform.position - knockerPosition;
         knockDir.Normalize();
+
+        Instantiate(hitEffect,transform.position,transform.rotation);
     }
 
 }
