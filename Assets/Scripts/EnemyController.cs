@@ -19,6 +19,11 @@ public class EnemyController : MonoBehaviour
     public float chaseSpeed, rangeToChase, waitAfterHitting;
 
     public int damageToDeal = 10;
+
+    private bool isKnockingBack;
+    public float knockbackTime, knockbackForce, waitAfterKnocking;
+    private float knockbackCounter, knockWaitCounter;
+    private Vector2 knockDir;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,70 +33,104 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isChasing)
+        if (!isKnockingBack)
         {
-            if (waitCounter > 0)
+            if (!isChasing)
             {
-                waitCounter = waitCounter - Time.deltaTime;
-                theRB.velocity = Vector2.zero;
-                if (waitCounter <= 0)
+                if (waitCounter > 0)
                 {
-                    moveCounter = Random.Range(moveTime * .75f, moveTime * 1.25f);
-                    anim.SetBool("moving", true);
-                    moveDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-                    moveDir.Normalize();
+                    waitCounter = waitCounter - Time.deltaTime;
+                    theRB.velocity = Vector2.zero;
+                    if (waitCounter <= 0)
+                    {
+                        moveCounter = Random.Range(moveTime * .75f, moveTime * 1.25f);
+                        anim.SetBool("moving", true);
+                        moveDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+                        moveDir.Normalize();
+                    }
+                }
+                else
+                {
+                    moveCounter -= Time.deltaTime;
+                    theRB.velocity = moveDir * moveSpeed;
+                    if (moveCounter <= 0)
+                    {
+                        waitCounter = Random.Range(waitTime * .75f, waitTime * 1.25f);
+                        anim.SetBool("moving", false);
+                    }
+
+                    if (shouldChase && PlayerController.instance.gameObject.activeInHierarchy)
+                    {
+                        if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) < rangeToChase)
+                        {
+                            isChasing = true;
+
+                        }
+                    }
+
                 }
             }
             else
             {
-                moveCounter -= Time.deltaTime;
-                theRB.velocity = moveDir * moveSpeed;
-                if (moveCounter <= 0)
+                if (waitCounter > 0)
                 {
-                    waitCounter = Random.Range(waitTime * .75f, waitTime * 1.25f);
-                    anim.SetBool("moving", false);
-                }
-
-                if (shouldChase && PlayerController.instance.gameObject.activeInHierarchy)
-                {
-                    if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) < rangeToChase)
+                    waitCounter -= Time.deltaTime;
+                    theRB.velocity = Vector2.zero;
+                    if (waitCounter <= 0)
                     {
-                        isChasing = true;
-
+                        anim.SetBool("moving", false);
                     }
+                }
+                else
+                {
+                    moveDir = PlayerController.instance.transform.position - transform.position;
+                    moveDir.Normalize();
+
+                    theRB.velocity = moveDir * chaseSpeed;
+                }
+                if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) > rangeToChase || !PlayerController.instance.gameObject.activeInHierarchy)
+                {
+                    isChasing = false;
+                    waitCounter = waitTime;
+                    anim.SetBool("moving", false);
                 }
 
             }
         }
         else
         {
-            if (waitCounter > 0)
+            if (knockbackCounter > 0)
             {
-                waitCounter -= Time.deltaTime;
-                theRB.velocity = Vector2.zero;
-                if (waitCounter <= 0)
+                knockbackCounter-=Time.deltaTime;
+                theRB.velocity = knockDir * knockbackForce;
+                if (knockbackCounter <= 0)
                 {
-                    anim.SetBool("moving", false);
+                    knockWaitCounter = waitAfterKnocking;
                 }
             }
             else
             {
-                moveDir = PlayerController.instance.transform.position - transform.position;
-                moveDir.Normalize();
-
-                theRB.velocity = moveDir * chaseSpeed;
+                knockWaitCounter-=Time.deltaTime;
+                theRB.velocity = Vector2.zero;
+                if (knockWaitCounter <= 0)
+                {
+                    isKnockingBack = false;
+                }
             }
-            if(Vector3.Distance(transform.position,PlayerController.instance.transform.position) > rangeToChase || !PlayerController.instance.gameObject.activeInHierarchy)
-            {
-                isChasing = false;
-                waitCounter = waitTime;
-                anim.SetBool("moving",false);
-            }
-
         }
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, area.bounds.min.x + 1f, area.bounds.max.x - 1f)
             , Mathf.Clamp(transform.position.y, area.bounds.min.y + 1f, area.bounds.max.y - 1f)
             , transform.position.z);
+
+    }
+
+    public void knockBack(Vector3 knockerPosition)
+    {
+        knockbackCounter = knockbackTime;
+        isKnockingBack = true;
+
+        knockDir = transform.position - knockerPosition;
+        knockDir.Normalize();
 
     }
 
