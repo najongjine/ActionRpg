@@ -17,6 +17,8 @@ public class EnemyController : MonoBehaviour
     public bool shouldChase;
     private bool isChasing;
     public float chaseSpeed, rangeToChase, waitAfterHitting;
+
+    public int damageToDeal = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +52,7 @@ public class EnemyController : MonoBehaviour
                     anim.SetBool("moving", false);
                 }
 
-                if (shouldChase)
+                if (shouldChase && PlayerController.instance.gameObject.activeInHierarchy)
                 {
                     if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) < rangeToChase)
                     {
@@ -79,7 +81,7 @@ public class EnemyController : MonoBehaviour
 
                 theRB.velocity = moveDir * chaseSpeed;
             }
-            if(Vector3.Distance(transform.position,PlayerController.instance.transform.position) > rangeToChase)
+            if(Vector3.Distance(transform.position,PlayerController.instance.transform.position) > rangeToChase || !PlayerController.instance.gameObject.activeInHierarchy)
             {
                 isChasing = false;
                 waitCounter = waitTime;
@@ -103,6 +105,7 @@ public class EnemyController : MonoBehaviour
                 anim.SetBool("moving", false);
 
                 PlayerController.instance.knockBack(transform.position);
+                PlayerHealthController.instance.DamagePlayer(damageToDeal);
             }
         }
     }
