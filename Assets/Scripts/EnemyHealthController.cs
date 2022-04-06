@@ -7,10 +7,12 @@ public class EnemyHealthController : MonoBehaviour
     public float currentHealth;
 
     public GameObject deathEffect;
+
+    private EnemyController theEC;
     // Start is called before the first frame update
     void Start()
     {
-        
+        theEC=GetComponent<EnemyController>();
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class EnemyHealthController : MonoBehaviour
             }
             Destroy(gameObject);
         }
+        theEC.knockBack(PlayerController.instance.transform.position);  
     }
 
 }
