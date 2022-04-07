@@ -53,4 +53,14 @@ public class PlayerHealthController : MonoBehaviour
 
     }
 
+    public void RestoreHealth(int healthToRestore)
+    {
+        currentHealth+=healthToRestore;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth=maxHealth;
+        }
+        UIManager.instance.UpdateHealth();
+    }
+
 }
