@@ -54,8 +54,12 @@ public class AreaActivator : MonoBehaviour
     {
         if (other.tag.ToLower() == "player")
         {
-            DespawnEnemies();
+            if (PlayerHealthController.instance.currentHealth > 0)
+            {
+                DespawnEnemies();
+            }
         }
+
     }
 
 
