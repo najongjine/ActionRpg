@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 knockDir;
 
     public GameObject hitEffect;
+
+    public float dashSpeed, dashLength;
+    private float dashCounter, activeMoveSpeed;
     private void Awake()
     {
         instance = this;
@@ -29,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         theRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        activeMoveSpeed = moveSpeed;
     }
 
     // Update is called once per frame
@@ -44,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
             /* with physics system */
             theRB.velocity = new Vector2(Input.GetAxis("Horizontal")
-                , Input.GetAxis("Vertical")).normalized * moveSpeed;
+                , Input.GetAxis("Vertical")).normalized * activeMoveSpeed;
 
             anim.SetFloat("Speed", theRB.velocity.magnitude);
 
@@ -87,6 +91,22 @@ public class PlayerController : MonoBehaviour
             {
                 wpnAnim.SetTrigger("Attack");
             }
+            if (dashCounter <= 0)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    activeMoveSpeed = dashSpeed;
+                    dashCounter = dashLength;
+                }
+            }
+            else
+            {
+                dashCounter-=Time.deltaTime;
+                if (dashCounter <= 0)
+                {
+                    activeMoveSpeed = moveSpeed;
+                }
+            }
 
         }
         else
@@ -106,12 +126,12 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("## called knockBack");
         knockbackCounter = knockbackTime;
-        isKnockingBack=true;
+        isKnockingBack = true;
 
         knockDir = transform.position - knockerPosition;
         knockDir.Normalize();
 
-        Instantiate(hitEffect,transform.position,transform.rotation);
+        Instantiate(hitEffect, transform.position, transform.rotation);
     }
 
 }

@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class HealthPickup : MonoBehaviour
 {
-    public int healthToRestore=30;
+    public int healthToRestore = 30;
+
+    public float lifeTime = 4f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (lifeTime > 0)
+        {
+            Destroy(gameObject, lifeTime);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
