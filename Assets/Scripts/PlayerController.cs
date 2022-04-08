@@ -25,7 +25,9 @@ public class PlayerController : MonoBehaviour
     private float dashCounter, activeMoveSpeed;
 
     public float totalStamina, stamRefillSpeed;
-    private float currentStamina;
+
+    [HideInInspector]
+    public float currentStamina;
     private void Awake()
     {
         instance = this;
@@ -37,6 +39,8 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         activeMoveSpeed = moveSpeed;
         currentStamina = totalStamina;
+
+        UIManager.instance.UpdateStamina();
     }
 
     // Update is called once per frame
@@ -118,6 +122,7 @@ public class PlayerController : MonoBehaviour
             {
                 currentStamina = totalStamina;
             }
+            UIManager.instance.UpdateStamina();
 
         }
         else

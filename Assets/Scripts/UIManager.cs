@@ -8,8 +8,8 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    public Slider healthSlider;
-    public TMP_Text healthText;
+    public Slider healthSlider, staminaSlider;
+    public TMP_Text healthText, staminaText;
 
     private void Awake()
     {
@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         UpdateHealth();
+        UpdateStamina();
     }
 
     // Update is called once per frame
@@ -32,6 +33,12 @@ public class UIManager : MonoBehaviour
         healthSlider.maxValue = PlayerHealthController.instance.maxHealth;
         healthSlider.value = PlayerHealthController.instance.currentHealth;
         healthText.text = $"Health : {PlayerHealthController.instance.currentHealth} / {PlayerHealthController.instance.maxHealth}";
+    }
+    public void UpdateStamina()
+    {
+        staminaSlider.maxValue = PlayerController.instance.totalStamina;
+        staminaSlider.value = PlayerController.instance.currentStamina;
+        staminaText.text= $"Stamina : {Mathf.RoundToInt(PlayerController.instance.currentStamina)} / {Mathf.RoundToInt(PlayerController.instance.totalStamina)}";
     }
 
 }
