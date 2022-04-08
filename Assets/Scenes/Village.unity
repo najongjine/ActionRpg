@@ -9934,6 +9934,9 @@ MonoBehaviour:
   hitEffect: {fileID: 3884395911013116090, guid: 85fcffdbb2a0d9a49977937b177dec9b, type: 3}
   dashSpeed: 15
   dashLength: 0.25
+  dashStamCost: 15
+  totalStamina: 50
+  stamRefillSpeed: 5
 --- !u!50 &453574058
 Rigidbody2D:
   serializedVersion: 4

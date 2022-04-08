@@ -21,8 +21,11 @@ public class PlayerController : MonoBehaviour
 
     public GameObject hitEffect;
 
-    public float dashSpeed, dashLength;
+    public float dashSpeed, dashLength, dashStamCost;
     private float dashCounter, activeMoveSpeed;
+
+    public float totalStamina, stamRefillSpeed;
+    private float currentStamina;
     private void Awake()
     {
         instance = this;
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour
         theRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         activeMoveSpeed = moveSpeed;
+        currentStamina = totalStamina;
     }
 
     // Update is called once per frame
@@ -93,10 +97,11 @@ public class PlayerController : MonoBehaviour
             }
             if (dashCounter <= 0)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) && currentStamina >= dashStamCost)
                 {
                     activeMoveSpeed = dashSpeed;
                     dashCounter = dashLength;
+                    currentStamina -= dashStamCost;
                 }
             }
             else
@@ -106,6 +111,12 @@ public class PlayerController : MonoBehaviour
                 {
                     activeMoveSpeed = moveSpeed;
                 }
+            }
+
+            currentStamina+=stamRefillSpeed*Time.deltaTime;
+            if (currentStamina > totalStamina)
+            {
+                currentStamina = totalStamina;
             }
 
         }
