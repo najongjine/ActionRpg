@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector]
     public float currentStamina;
+
+    private bool isSpinning;
+    public float spinCost, spinCoolDown;
+    private float spinCounter;
     private void Awake()
     {
         instance = this;
@@ -95,7 +99,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !isSpinning)
             {
                 wpnAnim.SetTrigger("Attack");
             }
@@ -114,6 +118,25 @@ public class PlayerController : MonoBehaviour
                 if (dashCounter <= 0)
                 {
                     activeMoveSpeed = moveSpeed;
+                }
+            }
+
+            if(spinCounter<= 0 )
+            {
+                if(Input.GetMouseButtonDown(1) && currentStamina >= spinCost)
+                {
+                    wpnAnim.SetTrigger("SpinAttack");
+                    currentStamina -= spinCost;
+                    spinCounter = spinCoolDown;
+                    isSpinning = true;
+                }
+            }
+            else
+            {
+                spinCounter-=Time.deltaTime;
+                if(spinCounter <= 0)
+                {
+                    isSpinning = false;
                 }
             }
 
