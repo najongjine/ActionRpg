@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class UIManager : MonoBehaviour
 
     public Slider healthSlider, staminaSlider;
     public TMP_Text healthText, staminaText, coinsText;
+
+    public string mainMenuScene;
 
     private void Awake()
     {
@@ -44,6 +47,14 @@ public class UIManager : MonoBehaviour
     public void UpdateCoins()
     {
         coinsText.text = $"Coins : {GameManager.instance.currentCoins}";
+    }
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuScene);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
 }
