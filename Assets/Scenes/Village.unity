@@ -10017,6 +10017,7 @@ MonoBehaviour:
   currentStamina: 0
   spinCost: 20
   spinCoolDown: 1
+  canMove: 1
 --- !u!50 &453574058
 Rigidbody2D:
   serializedVersion: 4
@@ -10520,7 +10521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &802229674
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33262,6 +33263,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5739415954279083541, guid: b13a4a44e9c8acb4f9917c1de1373c74, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1648417039}
+    - target: {fileID: 5739415954279083541, guid: b13a4a44e9c8acb4f9917c1de1373c74, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739415954279083541, guid: b13a4a44e9c8acb4f9917c1de1373c74, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5739415954995824036, guid: b13a4a44e9c8acb4f9917c1de1373c74, type: 3}
       propertyPath: m_text
       value: Resume
@@ -34156,6 +34169,7 @@ MonoBehaviour:
   staminaText: {fileID: 1161265592}
   coinsText: {fileID: 607103101}
   mainMenuScene: MainMenu
+  pauseScreen: {fileID: 802229673}
 --- !u!1 &1656843265
 GameObject:
   m_ObjectHideFlags: 0

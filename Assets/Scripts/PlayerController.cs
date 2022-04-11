@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     private bool isSpinning;
     public float spinCost, spinCoolDown;
     private float spinCounter;
+
+    public bool canMove;
     private void Awake()
     {
         instance = this;
@@ -50,6 +52,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove) { return; }
         if (!isKnockingBack)
         {
             /* without physics system */
