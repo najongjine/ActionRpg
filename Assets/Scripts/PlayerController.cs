@@ -52,7 +52,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!canMove) { return; }
+        if (!canMove || DialogManager.instance.dialogBox.activeInHierarchy) {
+            theRB.velocity = Vector2.zero;
+            anim.SetFloat("Speed", 0f);
+            return; 
+        }
         if (!isKnockingBack)
         {
             /* without physics system */
