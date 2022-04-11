@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && !isSpinning)
             {
                 wpnAnim.SetTrigger("Attack");
+                AudioManager.instance.PlaySFX(0);
             }
             if (dashCounter <= 0)
             {
@@ -132,6 +133,7 @@ public class PlayerController : MonoBehaviour
                     currentStamina -= spinCost;
                     spinCounter = spinCoolDown;
                     isSpinning = true;
+                    AudioManager.instance.PlaySFX(0);
                 }
             }
             else

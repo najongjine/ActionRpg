@@ -46,8 +46,10 @@ public class PlayerHealthController : MonoBehaviour
                 currentHealth = 0;
                 gameObject.SetActive(false);
                 Instantiate(deathEffect,transform.position,transform.rotation);
+                AudioManager.instance.PlaySFX(4);
             }
             UIManager.instance.UpdateHealth();
+            AudioManager.instance.PlaySFX(7);
 
         }
 

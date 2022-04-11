@@ -42,8 +42,10 @@ public class EnemyHealthController : MonoBehaviour
             {
                 Instantiate(coinToDrop, transform.position, transform.rotation);
             }
+            AudioManager.instance.PlaySFX(4);
 
         }
+        AudioManager.instance.PlaySFX(7);
         theEC.knockBack(PlayerController.instance.transform.position);  
     }
 
