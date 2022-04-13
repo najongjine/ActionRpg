@@ -7,13 +7,14 @@ public class AreaActivator : MonoBehaviour
     private BoxCollider2D areaBox;
 
     public GameObject[] allEnemies;
-    public List<GameObject> clonedEnemies=new List<GameObject>();
+    public List<GameObject> clonedEnemies = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
-        areaBox=GetComponent<BoxCollider2D>();
+        areaBox = GetComponent<BoxCollider2D>();
 
-        foreach(var enemy in allEnemies)
+        foreach (GameObject enemy in allEnemies)
         {
             enemy.SetActive(false);
         }
@@ -22,46 +23,47 @@ public class AreaActivator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void SpawnEnemies()
     {
-        foreach (var enemy in allEnemies)
+        foreach (GameObject enemy in allEnemies)
         {
-            var newEnemy=Instantiate(enemy,enemy.transform.position,enemy.transform.rotation);
+            GameObject newEnemy = Instantiate(enemy, enemy.transform.position, enemy.transform.rotation);
             newEnemy.SetActive(true);
             clonedEnemies.Add(newEnemy);
         }
     }
+
     private void DespawnEnemies()
     {
-        foreach (var enemy in clonedEnemies)
+        foreach (GameObject enemy in clonedEnemies)
         {
             Destroy(enemy);
         }
+
         clonedEnemies.Clear();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag.ToLower() == "player")
+        if (other.tag == "Player")
         {
+            CameraController.instance.areaBox = areaBox;
+
             SpawnEnemies();
         }
     }
+
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag.ToLower() == "player")
+        if (other.tag == "Player")
         {
             if (PlayerHealthController.instance.currentHealth > 0)
             {
                 DespawnEnemies();
             }
         }
-
     }
-
-
-
 }
