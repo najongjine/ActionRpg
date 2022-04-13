@@ -16,7 +16,10 @@ public class PlayerHealthController : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
     // Start is called before the first frame update
     void Start()
@@ -45,7 +48,7 @@ public class PlayerHealthController : MonoBehaviour
             {
                 currentHealth = 0;
                 gameObject.SetActive(false);
-                Instantiate(deathEffect,transform.position,transform.rotation);
+                Instantiate(deathEffect, transform.position, transform.rotation);
                 AudioManager.instance.PlaySFX(4);
             }
             UIManager.instance.UpdateHealth();
@@ -57,10 +60,10 @@ public class PlayerHealthController : MonoBehaviour
 
     public void RestoreHealth(int healthToRestore)
     {
-        currentHealth+=healthToRestore;
+        currentHealth += healthToRestore;
         if (currentHealth > maxHealth)
         {
-            currentHealth=maxHealth;
+            currentHealth = maxHealth;
         }
         UIManager.instance.UpdateHealth();
     }
