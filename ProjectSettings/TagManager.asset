@@ -14,8 +14,8 @@ TagManager:
   - UI
   - cinemachine_confiner
   - Player
-  - 
-  - 
+  - Enemy
+  - EnemyBullet
   - 
   - 
   - 
