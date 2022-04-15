@@ -1970,6 +1970,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allEnemies:
   - {fileID: 2064560374}
+  lockDoors: 1
+  doors:
+  - {fileID: 488478052}
+  - {fileID: 1704490405}
+  - {fileID: 128322250}
 --- !u!1001 &128322248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2034,6 +2039,11 @@ PrefabInstance:
 --- !u!4 &128322249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8004504234123197273, guid: 7fed4f459917c2348aec0fe9c21e56ec, type: 3}
+  m_PrefabInstance: {fileID: 128322248}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &128322250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8004504234123197272, guid: 7fed4f459917c2348aec0fe9c21e56ec, type: 3}
   m_PrefabInstance: {fileID: 128322248}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &183262586
@@ -2237,6 +2247,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allEnemies: []
+  lockDoors: 0
+  doors: []
+--- !u!1 &488478052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8004504234123197272, guid: 7fed4f459917c2348aec0fe9c21e56ec, type: 3}
+  m_PrefabInstance: {fileID: 8004504233939856956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &488478053 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8004504234123197273, guid: 7fed4f459917c2348aec0fe9c21e56ec, type: 3}
@@ -6812,6 +6829,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8004504234123197273, guid: 7fed4f459917c2348aec0fe9c21e56ec, type: 3}
   m_PrefabInstance: {fileID: 1704490403}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1704490405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8004504234123197272, guid: 7fed4f459917c2348aec0fe9c21e56ec, type: 3}
+  m_PrefabInstance: {fileID: 1704490403}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1727555190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7090,6 +7112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allEnemies: []
+  lockDoors: 0
+  doors: []
 --- !u!1 &2064560374 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4694900480335984184, guid: 8399001522bb837428332ff4de4796fe, type: 3}
