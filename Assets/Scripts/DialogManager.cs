@@ -29,7 +29,7 @@ public class DialogManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dialogBox.activeInHierarchy)
+        if (GameManager.instance.dialogActive)
         {
             if (Input.anyKeyDown)
             {
@@ -39,6 +39,7 @@ public class DialogManager : MonoBehaviour
                     if (currentLine >= dialogLines.Length)
                     {
                         dialogBox.SetActive(false);
+                        GameManager.instance.dialogActive = false;
                     }
                     else
                     {
@@ -59,6 +60,7 @@ public class DialogManager : MonoBehaviour
         dialogText.text = dialogLines[currentLine];
         dialogBox.SetActive(true);
         justStarted = true;
+        GameManager.instance.dialogActive = true;
     }
 
 }
