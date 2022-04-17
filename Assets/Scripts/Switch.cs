@@ -32,7 +32,7 @@ public class Switch : MonoBehaviour
                 {
                     switchSprite.sprite = offSwitchSprite;
                 }
-                objectToSwitchOff.SetActive(isOn);
+                objectToSwitchOff.SetActive(!isOn);
             }
         }
     }
