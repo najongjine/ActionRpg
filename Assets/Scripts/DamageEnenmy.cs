@@ -36,6 +36,11 @@ public class DamageEnenmy : MonoBehaviour
             other.GetComponent<BreakableObject>().Break();
             SpawnHitEffect();
         }
+        if (other.tag.ToLower() == "boss")
+        {
+            other.GetComponent<BossWeakpoint>().DamageBoss(damageToDeal);
+            SpawnHitEffect();
+        }
     }
 
 }

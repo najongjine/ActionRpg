@@ -5062,9 +5062,10 @@ GameObject:
   - component: {fileID: 799594767}
   - component: {fileID: 799594766}
   - component: {fileID: 799594768}
+  - component: {fileID: 799594769}
   m_Layer: 0
   m_Name: eyebot
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5150,6 +5151,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &799594769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799594765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2f07cc641c41f4199bf603b4f80371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theBC: {fileID: 1819124060}
 --- !u!1 &802609628
 GameObject:
   m_ObjectHideFlags: 0
@@ -17477,6 +17491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea6b43b30a7b594a9e2bdd4df78d1b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossName: Eye Of Disaster
+  bossHealth: 1
   theBoss: {fileID: 799594765}
   door1: {fileID: 1819852417}
   door2: {fileID: 732797597}
@@ -17491,6 +17507,7 @@ MonoBehaviour:
   timeActive: 3
   timeBetweenSpawns: 1
   firstSpawnDelay: 2
+  deathEffect: {fileID: 3884395911013116090, guid: d1521eb8cb96f4e479c14940122b61bd, type: 3}
 --- !u!1001 &1819852415
 PrefabInstance:
   m_ObjectHideFlags: 0
