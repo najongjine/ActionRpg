@@ -114,4 +114,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   rotateSpeed: 100
-  damageToPlayer: 10
+  damageToPlayer: 0

@@ -17771,7 +17771,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossName: Eye Of Disaster
-  bossHealth: 1
+  bossHealth: 100
+  stage2Threshold: 80
+  stage3Threshold: 90
   theBoss: {fileID: 799594765}
   door1: {fileID: 1819852417}
   door2: {fileID: 732797597}
@@ -17787,6 +17789,19 @@ MonoBehaviour:
   timeBetweenSpawns: 1
   firstSpawnDelay: 2
   deathEffect: {fileID: 3884395911013116090, guid: d1521eb8cb96f4e479c14940122b61bd, type: 3}
+  theShot: {fileID: 8232425643911645618, guid: c8383153fd2fbcf4eabc59e1ace0286a, type: 3}
+  shotPoints:
+  - {fileID: 946191458}
+  - {fileID: 880878342}
+  - {fileID: 1111739603}
+  - {fileID: 982302891}
+  - {fileID: 483513219}
+  - {fileID: 1390698618}
+  - {fileID: 1767286587}
+  - {fileID: 1359030827}
+  shotCenter: {fileID: 992766298}
+  timeBetweenShots: 0.5
+  shotRotateSpeed: 1000
 --- !u!1001 &1819852415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18379,60 +18394,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fed4f459917c2348aec0fe9c21e56ec, type: 3}
---- !u!1001 &8232425645302333958
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8232425643911645621, guid: c8383153fd2fbcf4eabc59e1ace0286a, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8232425643911645621, guid: c8383153fd2fbcf4eabc59e1ace0286a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.5407639
-      objectReference: {fileID: 0}
-    - target: {fileID: 8232425643911645621, guid: c8383153fd2fbcf4eabc59e1ace0286a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 37.516582
-      objectReference: {fileID: 0}
-    - target: {fileID: 8232425643911645621, guid: c8383153fd2fbcf4eabc59e1ace0286a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8232425643911645621, guid: c8383153fd2fbcf4eabc59e1ace0286a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8232425643911645621, guid: c8383153fd2fbcf4eabc59e1ace0286a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8232425643911645621, guid: c8383153fd2fbcf4eabc59e1ace0286a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8232425643911645621, guid: c8383153fd2fbcf4eabc59e1ace0286a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8232425643911645621, guid: c8383153fd2fbcf4eabc59e1ace0286a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8232425643911645621, guid: c8383153fd2fbcf4eabc59e1ace0286a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8232425643911645621, guid: c8383153fd2fbcf4eabc59e1ace0286a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8232425643911645622, guid: c8383153fd2fbcf4eabc59e1ace0286a, type: 3}
-      propertyPath: m_Name
-      value: BossShot
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c8383153fd2fbcf4eabc59e1ace0286a, type: 3}

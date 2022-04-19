@@ -6,6 +6,7 @@ public class BossController : MonoBehaviour
 {
     public string bossName;
     public int bossHealth;
+    public int stage2Threshold, stage3Threshold;
 
     public GameObject theBoss, door1, door2;
     public Transform[] spawnPoints;
@@ -15,6 +16,12 @@ public class BossController : MonoBehaviour
     private float activeCounter, spawnCounter;
 
     public GameObject deathEffect;
+
+    public BossShot theShot;
+    public Transform[] shotPoints;
+    public Transform shotCenter;
+    public float timeBetweenShots,shotRotateSpeed;
+    private float shotCounter;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +56,31 @@ public class BossController : MonoBehaviour
                     theBoss.SetActive(false);
                 }
                 theBoss.transform.position = Vector3.MoveTowards(theBoss.transform.position, moveTarget, moveSpeed * Time.deltaTime);
+
+                shotCounter-=Time.deltaTime;
+                if (shotCounter <= 0)
+                {
+                    shotCounter = timeBetweenShots;
+                    if (bossHealth >= stage2Threshold)
+                    {
+                        for (int i = 0; i < 4; i++)
+                        {
+                            Instantiate(theShot, shotPoints[i].position, shotPoints[i].rotation).SetDirection(shotCenter.position);
+                        }
+                    }
+                    else{
+                        for (int i = 0; i < shotPoints.Length; i++)
+                        {
+                            Instantiate(theShot, shotPoints[i].position, shotPoints[i].rotation).SetDirection(shotCenter.position);
+                        }
+
+                    }
+                    
+                }
+                if (bossHealth <= stage3Threshold)
+                {
+                    shotCenter.transform.rotation = Quaternion.Euler(shotCenter.transform.rotation.eulerAngles.x, shotCenter.transform.rotation.eulerAngles.y, shotCenter.transform.rotation.eulerAngles.z + (shotRotateSpeed * Time.deltaTime));
+                }
 
             }
 
