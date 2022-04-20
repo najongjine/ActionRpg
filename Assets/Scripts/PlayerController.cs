@@ -36,6 +36,11 @@ public class PlayerController : MonoBehaviour
     private float spinCounter;
 
     public bool canMove;
+
+    public SpriteRenderer swordSR;
+    public Sprite[] allSwords;
+    public DamageEnenmy swordDmg;
+    public int currentSword;
     private void Awake()
     {
         if (instance == null)
@@ -195,6 +200,12 @@ public class PlayerController : MonoBehaviour
     public void DoatLevelStart()
     {
         canMove = true;
+    }
+    public void UpgradeSword(int newDamage,int newSwordRef)
+    {
+        swordDmg.damageToDeal=newDamage;
+        currentSword = newSwordRef;
+        swordSR.sprite=allSwords[newSwordRef];
     }
 
 }

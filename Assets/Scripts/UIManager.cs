@@ -17,6 +17,9 @@ public class UIManager : MonoBehaviour
 
     public GameObject blackoutScreen;
 
+    public Slider bossHealthSlider;
+    public TMP_Text bossNameText;
+
     private void Awake()
     {
         instance = this;

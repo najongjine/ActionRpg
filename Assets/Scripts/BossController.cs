@@ -22,12 +22,24 @@ public class BossController : MonoBehaviour
     public Transform shotCenter;
     public float timeBetweenShots,shotRotateSpeed;
     private float shotCounter;
+
+    public AudioSource levelBGM, bossBGM;
+
+    public GameObject victoryObject;
     // Start is called before the first frame update
     void Start()
     {
         door1.SetActive(true);
         door2.SetActive(true);
         spawnCounter = firstSpawnDelay;
+        UIManager.instance.bossHealthSlider.maxValue = bossHealth;
+        UIManager.instance.bossHealthSlider.value = bossHealth;
+        UIManager.instance.bossHealthSlider.gameObject.SetActive(true);
+
+        UIManager.instance.bossNameText.text = bossName;
+        UIManager.instance.bossNameText.gameObject.SetActive(true);
+        levelBGM.Stop();
+        bossBGM.Play();
     }
 
     // Update is called once per frame
@@ -95,10 +107,18 @@ public class BossController : MonoBehaviour
         {
             bossHealth = 0;
             theBoss.SetActive(false);
-            door1.SetActive(false);
-            door2.SetActive(false);
+            //door1.SetActive(false);
+            //door2.SetActive(false);
             Instantiate(deathEffect,theBoss.transform.position, theBoss.transform.rotation);
+
+            UIManager.instance.bossHealthSlider.gameObject.SetActive(false);
+            UIManager.instance.bossNameText.gameObject.SetActive(false);
+            levelBGM.Play();
+            bossBGM.Stop();
+
+            victoryObject.SetActive(true);
         }
+        UIManager.instance.bossHealthSlider.value = bossHealth;
 
     }
 

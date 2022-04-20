@@ -18,7 +18,7 @@ public class DialogActivator : MonoBehaviour
     {
         if(canActivate && Input.GetMouseButtonDown(0) && !DialogManager.instance.dialogBox.activeInHierarchy)
         {
-            DialogManager.instance.ShowDialog(lines);
+            DialogManager.instance.ShowDialog(lines,true);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

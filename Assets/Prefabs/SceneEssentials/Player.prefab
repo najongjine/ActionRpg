@@ -326,6 +326,12 @@ MonoBehaviour:
   spinCost: 20
   spinCoolDown: 1
   canMove: 1
+  swordSR: {fileID: 1766824852793594848}
+  allSwords:
+  - {fileID: -7855203551248514480, guid: 7613a4a617b1ad34892d0b6c6718d508, type: 3}
+  - {fileID: -2064859774160998932, guid: 7613a4a617b1ad34892d0b6c6718d508, type: 3}
+  swordDmg: {fileID: 1766824852793594850}
+  currentSword: 0
 --- !u!58 &1766824853262097355
 CircleCollider2D:
   m_ObjectHideFlags: 0
