@@ -11,6 +11,7 @@ public class LevelStartActions : MonoBehaviour
         PlayerController.instance.DoatLevelStart();
         SaveManager.instance.activeSave.currentScene = SceneManager.GetActiveScene().name;
         SaveManager.instance.activeSave.sceneStartPosition=PlayerController.instance.transform.position;
+        SaveManager.instance.saveInfo();
     }
 
     
