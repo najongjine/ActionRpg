@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentCoins = SaveManager.instance.activeSave.currentCoins;
     }
 
     // Update is called once per frame
@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
         currentCoins+=coinsToAdd;
         UIManager.instance.UpdateCoins();
+        SaveManager.instance.activeSave.currentCoins = currentCoins;
     }
     public void PauseUnpause()
     {
@@ -64,13 +65,14 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(RespawnCo());
     }
-    public IEnumerable RespawnCo()
+    public IEnumerator RespawnCo()
     {
         yield return new WaitForSeconds(waitForDeathScreen);
         UIManager.instance.deathScreen.SetActive(true);
         yield return new WaitForSeconds(waitToRespawn);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         UIManager.instance.blackoutScreen.SetActive(true);
+        PlayerController.instance.ResetOnResapwn();
     }
 
 }

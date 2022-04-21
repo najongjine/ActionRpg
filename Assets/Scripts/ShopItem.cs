@@ -34,13 +34,17 @@ public class ShopItem : MonoBehaviour
                     {
                         PlayerHealthController.instance.maxHealth += amountToAdd;
                         PlayerHealthController.instance.currentHealth += amountToAdd;
+                        SaveManager.instance.activeSave.maxHealth = PlayerHealthController.instance.maxHealth;
                         UIManager.instance.UpdateHealth();
                     }else if (isStaminaUpgrade)
                     {
                         PlayerController.instance.totalStamina += amountToAdd;
                         PlayerController.instance.currentStamina += amountToAdd;
+                        SaveManager.instance.activeSave.maxStamina = PlayerController.instance.totalStamina;
                         UIManager.instance.UpdateStamina();
                     }
+
+                    SaveManager.instance.activeSave.currentCoins=GameManager.instance.currentCoins;
 
                     if (removeAfterPurchase)
                     {
