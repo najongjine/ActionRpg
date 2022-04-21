@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public bool dialogActive;
 
+    public float waitForDeathScreen=1f,waitToRespawn=2f;
     private void Awake()
     {
         if (instance == null)
@@ -60,7 +62,15 @@ public class GameManager : MonoBehaviour
 
     public void Respawn()
     {
-
+        StartCoroutine(RespawnCo());
+    }
+    public IEnumerable RespawnCo()
+    {
+        yield return new WaitForSeconds(waitForDeathScreen);
+        UIManager.instance.deathScreen.SetActive(true);
+        yield return new WaitForSeconds(waitToRespawn);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        UIManager.instance.blackoutScreen.SetActive(true);
     }
 
 }
