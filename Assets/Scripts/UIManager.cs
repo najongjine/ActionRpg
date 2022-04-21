@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     public Slider bossHealthSlider;
     public TMP_Text bossNameText;
 
+    public GameObject deathScreen;
+
     private void Awake()
     {
         instance = this;

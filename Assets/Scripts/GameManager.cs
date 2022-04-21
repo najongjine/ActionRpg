@@ -58,4 +58,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Respawn()
+    {
+
+    }
+
 }
