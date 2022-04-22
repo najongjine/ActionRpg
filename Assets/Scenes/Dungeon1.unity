@@ -18262,6 +18262,7 @@ MonoBehaviour:
   levelBGM: {fileID: 1936658105}
   bossBGM: {fileID: 169180718}
   victoryObject: {fileID: 634346188}
+  progressToMark: Dungeon 1 Completed
 --- !u!1001 &1819852415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18826,6 +18827,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a2c5f23297c1ac40a3ae64fdb5b05a8, type: 3}
+--- !u!1001 &1435557417253624045
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1435557416451475229, guid: fbaff868038831f49b313369babe0c32, type: 3}
+      propertyPath: m_Name
+      value: SaveManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435557416451475231, guid: fbaff868038831f49b313369babe0c32, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435557416451475231, guid: fbaff868038831f49b313369babe0c32, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.954637
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435557416451475231, guid: fbaff868038831f49b313369babe0c32, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.4829414
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435557416451475231, guid: fbaff868038831f49b313369babe0c32, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -38.829796
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435557416451475231, guid: fbaff868038831f49b313369babe0c32, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435557416451475231, guid: fbaff868038831f49b313369babe0c32, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435557416451475231, guid: fbaff868038831f49b313369babe0c32, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435557416451475231, guid: fbaff868038831f49b313369babe0c32, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435557416451475231, guid: fbaff868038831f49b313369babe0c32, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435557416451475231, guid: fbaff868038831f49b313369babe0c32, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435557416451475231, guid: fbaff868038831f49b313369babe0c32, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fbaff868038831f49b313369babe0c32, type: 3}
 --- !u!1001 &4440377750218882745
 PrefabInstance:
   m_ObjectHideFlags: 0

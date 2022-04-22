@@ -26,6 +26,8 @@ public class BossController : MonoBehaviour
     public AudioSource levelBGM, bossBGM;
 
     public GameObject victoryObject;
+
+    public string progressToMark;
     // Start is called before the first frame update
     void Start()
     {
@@ -117,6 +119,7 @@ public class BossController : MonoBehaviour
             bossBGM.Stop();
 
             victoryObject.SetActive(true);
+            SaveManager.instance.MarkProgress(progressToMark);
         }
         UIManager.instance.bossHealthSlider.value = bossHealth;
 
